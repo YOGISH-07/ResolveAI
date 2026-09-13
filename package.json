@@ -8,7 +8,7 @@
     "server": "tsx watch server/src/index.ts",
     "start": "concurrently \"tsx watch server/src/index.ts\" \"vite\"",
     "build:client": "tsc -b && vite build",
-    "build:server": "tsc -p tsconfig.server.json",
+    "build:server": "tsc -p tsconfig.server.json && node -e \"require('fs').writeFileSync('dist-server/package.json', JSON.stringify({type:'commonjs'}))\"",
     "build": "npm run build:client && npm run build:server",
     "start:prod": "node dist-server/index.js",
     "lint": "oxlint",
